@@ -2,8 +2,8 @@
 # Passo 1: Entrar no sistema da empresa 
     # https://dlp.hashtagtreinamentos.com/python/intensivao/login
 
-import pyautogui, time
-import pandas as pd
+import pyautogui
+import time
 
 # pyautogui.write -> escrever um texto
 # pyautogui.press -> apertar 1 tecla
@@ -15,12 +15,8 @@ pyautogui.PAUSE = 0.3
 pyautogui.press("win")
 pyautogui.write("chrome")
 pyautogui.press("enter")
-time.sleep(1)
-pyautogui.click(x=552, y=509)
-pyautogui.hotkey("ctrl", "t")
 
-
-# Passo 1: entrar no link 
+# entrar no link 
 pyautogui.write("https://dlp.hashtagtreinamentos.com/python/intensivao/login")
 pyautogui.press("enter")
 time.sleep(3)
@@ -28,15 +24,16 @@ time.sleep(3)
 
 # Passo 2: Fazer login
 # selecionar o campo de email
-pyautogui.click(x=3066, y=746)
+pyautogui.click(x=685, y=451)
 # escrever o seu email
-pyautogui.write("teste@gmail.com")
+pyautogui.write("pythonimpressionador@gmail.com")
 pyautogui.press("tab") # passando pro próximo campo
 pyautogui.write("sua senha")
-pyautogui.click(x=2860, y=930) # clique no botao de login
+pyautogui.click(x=955, y=638) # clique no botao de login
 time.sleep(3)
 
 # Passo 3: Importar a base de produtos pra cadastrar
+import pandas as pd
 
 tabela = pd.read_csv("produtos.csv")
 
@@ -45,7 +42,7 @@ print(tabela)
 # Passo 4: Cadastrar um produto
 for linha in tabela.index:
     # clicar no campo de código
-    pyautogui.click(x=2692, y=582)
+    pyautogui.click(x=653, y=294)
     # pegar da tabela o valor do campo que a gente quer preencher
     codigo = tabela.loc[linha, "codigo"]
     # preencher o campo
@@ -71,7 +68,3 @@ for linha in tabela.index:
     # dar scroll de tudo pra cima
     pyautogui.scroll(5000)
     # Passo 5: Repetir o processo de cadastro até o fim
-
-
-
-print("finish 3")
